@@ -1,12 +1,12 @@
 Summary:	Program for bidirectional synchronization
 Summary(pl):	Program do synchronizacji dwukierunkowej
 Name:		unison
-Version:	2.9.1
-Release:	2
+Version:	2.10.2
+Release:	1
 License:	GPL
 Group:		Daemons
-Source0:	http://www.cis.upenn.edu/~bcpierce/unison/download/stable/%{name}-%{version}/src.tar.gz
-# Source0-md5:	d8084fa87c13671de21ec1b701a4606c
+Source0:	http://www.cis.upenn.edu/~bcpierce/unison/download/stable/%{name}-%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	a93cf03d4221ab6bab8b758b0325a9d5
 Source1:	%{name}.init
 BuildRequires:	ocaml
 URL:		http://www.cis.upenn.edu/~bcpierce/unison/
