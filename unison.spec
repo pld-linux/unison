@@ -7,6 +7,7 @@ License:	GPL
 Group:		Daemons
 Source0:	http://www.cis.upenn.edu/~bcpierce/unison/download/stable/%{name}-%{version}/src.tar.gz
 # Source0-md5:	d8084fa87c13671de21ec1b701a4606c
+Source1:	%{name}.init
 BuildRequires:	ocaml
 URL:		http://www.cis.upenn.edu/~bcpierce/unison/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,6 +28,14 @@ ró¿nych maszynach (lub ró¿nych dyskach tej samej maszyny),
 oddzielne modyfikowanie ich, a nastêpnie uaktualnianie poprzez
 propagowanie zmian z ka¿dej z kopii do drugiej.
 
+%package init
+Summary: Init script for system-wide unison service.
+Group:	Daemons
+
+%description init
+Init script for system-wide unison service. Don't run this unless you know the
+security risks involved.
+
 %prep
 %setup -q
 
@@ -39,6 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_bindir}
 
 install unison $RPM_BUILD_ROOT%{_bindir}
+#install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -47,3 +57,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README BUGS.txt CONTRIB DEPENDENCIES.ps NEWS ROADMAP.txt TODO.txt
 %attr(755,root,root) %{_bindir}/*
+
+%files init
+#%attr(744,root,root) /etc/rc.d/init.d/%{name}
