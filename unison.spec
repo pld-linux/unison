@@ -29,12 +29,19 @@ oddzielne modyfikowanie ich, a nastêpnie uaktualnianie poprzez
 propagowanie zmian z ka¿dej z kopii do drugiej.
 
 %package init
-Summary: Init script for system-wide unison service.
-Group:	Daemons
+Summary:	Init script for system-wide unison service
+Summary(pl):	Skrypt init dla ogólnosystemowej us³ugi unison
+Group:		Daemons
+Requires:	%{name} = %{version}-%{release}
 
 %description init
-Init script for system-wide unison service. Don't run this unless you know the
-security risks involved.
+Init script for system-wide unison service. Don't run this unless you
+know the security risks involved.
+
+%description init -l pl
+Skrypt init dla ogólnosystemowej us³ugi unison. Nie nale¿y go
+uruchamiaæ nie zdaj±c sobie sprawy ze zwi±zanych z tym zagro¿eñ
+bezpieczeñstwa.
 
 %prep
 %setup -q
@@ -59,4 +66,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 
 %files init
+%defattr(644,root,root,755)
 #%attr(744,root,root) /etc/rc.d/init.d/%{name}
