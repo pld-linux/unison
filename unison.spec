@@ -8,7 +8,7 @@ Group:		Daemons
 Source0:	http://www.cis.upenn.edu/~bcpierce/unison/download/stable/%{name}-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	a93cf03d4221ab6bab8b758b0325a9d5
 Source1:	%{name}.init
-#BuildRequires:	ocaml
+BuildRequires:	ocaml
 URL:		http://www.cis.upenn.edu/~bcpierce/unison/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
