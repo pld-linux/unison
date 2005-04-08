@@ -8,7 +8,7 @@ Group:		Daemons
 Source0:	http://www.cis.upenn.edu/~bcpierce/unison/download/stable/%{name}-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	a93cf03d4221ab6bab8b758b0325a9d5
 Source1:	%{name}.init
-BuildRequires:	ocaml
+#BuildRequires:	ocaml
 URL:		http://www.cis.upenn.edu/~bcpierce/unison/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,10 +52,10 @@ bezpieczeñstwa.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT{%{_bindir},/etc/rc.d/init.d}
 
 install unison $RPM_BUILD_ROOT%{_bindir}
-#install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,4 +67,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files init
 %defattr(644,root,root,755)
-#%attr(744,root,root) /etc/rc.d/init.d/%{name}
+%attr(754,root,root) /etc/rc.d/init.d/%{name}
