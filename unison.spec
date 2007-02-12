@@ -1,5 +1,5 @@
 Summary:	Program for bidirectional synchronization
-Summary(pl):	Program do synchronizacji dwukierunkowej
+Summary(pl.UTF-8):   Program do synchronizacji dwukierunkowej
 Name:		unison
 Version:	2.9.20
 Release:	1
@@ -21,16 +21,16 @@ different hosts (or different disks on the same host), modified
 separately, and then brought up to date by propagating the changes in
 each replica to the other.
 
-%description -l pl
-Unison to narzêdzie do synchronizacji plików dla uniksów i Windows.
-Pozwala na przechowywanie dwóch kopii zbioru plików i katalogów na
-ró¿nych maszynach (lub ró¿nych dyskach tej samej maszyny),
-oddzielne modyfikowanie ich, a nastêpnie uaktualnianie poprzez
-propagowanie zmian z ka¿dej z kopii do drugiej.
+%description -l pl.UTF-8
+Unison to narzÄ™dzie do synchronizacji plikÃ³w dla uniksÃ³w i Windows.
+Pozwala na przechowywanie dwÃ³ch kopii zbioru plikÃ³w i katalogÃ³w na
+rÃ³Å¼nych maszynach (lub rÃ³Å¼nych dyskach tej samej maszyny),
+oddzielne modyfikowanie ich, a nastÄ™pnie uaktualnianie poprzez
+propagowanie zmian z kaÅ¼dej z kopii do drugiej.
 
 %package init
 Summary:	Init script for system-wide unison service
-Summary(pl):	Skrypt init dla ogólnosystemowej us³ugi unison
+Summary(pl.UTF-8):   Skrypt init dla ogÃ³lnosystemowej usÅ‚ugi unison
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
@@ -38,10 +38,10 @@ Requires:	%{name} = %{version}-%{release}
 Init script for system-wide unison service. Don't run this unless you
 know the security risks involved.
 
-%description init -l pl
-Skrypt init dla ogólnosystemowej us³ugi unison. Nie nale¿y go
-uruchamiaæ nie zdaj±c sobie sprawy ze zwi±zanych z tym zagro¿eñ
-bezpieczeñstwa.
+%description init -l pl.UTF-8
+Skrypt init dla ogÃ³lnosystemowej usÅ‚ugi unison. Nie naleÅ¼y go
+uruchamiaÄ‡ nie zdajÄ…c sobie sprawy ze zwiÄ…zanych z tym zagroÅ¼eÅ„
+bezpieczeÅ„stwa.
 
 %prep
 %setup -q
