@@ -1,5 +1,5 @@
 Summary:	Program for bidirectional synchronization
-Summary(pl.UTF-8):   Program do synchronizacji dwukierunkowej
+Summary(pl.UTF-8):	Program do synchronizacji dwukierunkowej
 Name:		unison
 Version:	2.13.16
 Release:	1
@@ -28,7 +28,7 @@ propagowanie zmian z każdej z kopii do drugiej.
 
 %package init
 Summary:	Init script for system-wide unison service
-Summary(pl.UTF-8):   Skrypt init dla ogólnosystemowej usługi unison
+Summary(pl.UTF-8):	Skrypt init dla ogólnosystemowej usługi unison
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
