@@ -1,3 +1,6 @@
+# TODO
+# - gtk ui
+# - make calls missing etags
 Summary:	Program for bidirectional synchronization
 Summary(pl.UTF-8):	Program do synchronizacji dwukierunkowej
 Name:		unison
@@ -10,6 +13,7 @@ Source0:	http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/%{na
 Source1:	%{name}.init
 URL:		http://www.cis.upenn.edu/~bcpierce/unison/
 BuildRequires:	ocaml
+BuildRequires:	rpmbuild(macros) >= 1.228
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -22,15 +26,17 @@ each replica to the other.
 %description -l pl.UTF-8
 Unison to narzędzie do synchronizacji plików dla uniksów i Windows.
 Pozwala na przechowywanie dwóch kopii zbioru plików i katalogów na
-różnych maszynach (lub różnych dyskach tej samej maszyny),
-oddzielne modyfikowanie ich, a następnie uaktualnianie poprzez
-propagowanie zmian z każdej z kopii do drugiej.
+różnych maszynach (lub różnych dyskach tej samej maszyny), oddzielne
+modyfikowanie ich, a następnie uaktualnianie poprzez propagowanie
+zmian z każdej z kopii do drugiej.
 
 %package init
 Summary:	Init script for system-wide unison service
 Summary(pl.UTF-8):	Skrypt init dla ogólnosystemowej usługi unison
 Group:		Daemons
+Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name} = %{version}-%{release}
+Requires:	rc-scripts
 
 %description init
 Init script for system-wide unison service. Don't run this unless you
@@ -45,23 +51,32 @@ bezpieczeństwa.
 %setup -q
 
 %build
-%{__make} \
+%{__make} -j1 \
 	UISTYLE=text
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},/etc/rc.d/init.d}
-
-install unison $RPM_BUILD_ROOT%{_bindir}
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
+install -p unison $RPM_BUILD_ROOT%{_bindir}
+install -p %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post init
+/sbin/chkconfig --add %{name}
+%service %{name} restart
+
+%preun init
+if [ "$1" = "0" ]; then
+	%service -q %{name} stop
+	/sbin/chkconfig --del %{name}
+fi
+
 %files
 %defattr(644,root,root,755)
 %doc README BUGS.txt CONTRIB NEWS ROADMAP.txt TODO.txt
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/%{name}
 
 %files init
 %defattr(644,root,root,755)
